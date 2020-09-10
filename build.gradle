@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+
+repositories {
+    mavenCentral()
+}
+
+def swaggerVersion = '3.0.0'
+def commonsCollectionsVersion = '3.2.2'
+def assertjCoreVersion = '3.16.1'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.flywaydb:flyway-core'
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
+    compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+    compile group: 'org.springframework.plugin', name: 'spring-plugin-core', version: '2.0.0.RELEASE'
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.2'
+    implementation("commons-collections:commons-collections:$commonsCollectionsVersion")
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'
+    testCompile group: 'com.h2database', name: 'h2', version: '1.4.197'
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.assertj:assertj-core:$assertjCoreVersion")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.2'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.2'
+}
+
+test {
+    useJUnitPlatform()
+}
